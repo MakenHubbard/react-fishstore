@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import authRequests from '../../firebaseRequest/auth';
+import authRequests from '../../firebaseRequests/auth';
 import './Navbar.css';
 
 class Navbar extends React.Component {
