@@ -6,7 +6,7 @@ const constants = {
     projectId: '',
     storageBucket: '',
     messagingSenderId: '',
-  }
-}
+  },
+};
 
 export default constants;
