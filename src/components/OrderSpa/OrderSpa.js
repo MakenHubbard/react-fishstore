@@ -1,8 +1,8 @@
 import React from 'react';
-
+import {Link} from 'react-router-dom';
 import orderRequests from '../../firebaseRequests/orders';
 import authRequests from '../../firebaseRequests/auth';
-import Orders from '../Order/Order';
+import moment from 'moment';
 import './OrderSpa.css';
 
 class OrderSpa extends React.Component {
@@ -14,7 +14,7 @@ class OrderSpa extends React.Component {
     orderRequests
       .getRequest(authRequests.getUid())
       .then((orders) => {
-        this.setState({orders});
+        this.setState({ orders });
       })
       .catch((err) => {
         console.error('error with fish get request', err);
@@ -24,15 +24,19 @@ class OrderSpa extends React.Component {
   render () {
     const orderComponents = this.state.orders.map((order) => {
       return (
-        <Orders
+        <button
           key={order.id}
-        />
+          className="col-xs-12 btn btn-default order-button"
+        >
+          <span className="col-xs-6">Order Number: {order.id}</span>
+          <span className="col-xs-6">Order Date: {moment(order.dateTime).format('LLL')}</span>
+        </button>
       );
     });
     return (
-      <div className="OrderSpa">
+      <div className="OrderSpa col-xs-12">
         <h2>Orders</h2>
-        <button>New Order</button>
+        <button><Link to="/new">New Order</Link></button>
         <ul>
           {orderComponents}
         </ul>
