@@ -35,7 +35,7 @@ class New extends React.Component {
         this.props.history.push('/orders');
       })
       .catch((err) => {
-        console.error('error in order post', err)
+        console.error('error in order post', err);
       });
   };
 
